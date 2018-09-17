@@ -14,17 +14,13 @@ import { logoutAsync } from '../../bus/auth/actions';
 const mapStateToProps = (state) => {
     return ({
         isAuthenticated: state.auth.get('isAuthenticated'),
-        profile: state.profile
+        profile: state.profile,
+        isOnline: state.ui.get('isOnline')
     });
 }
 
 @connect(mapStateToProps, { logoutAsync })
 export default class Nav extends Component {
-    static defaultProps = {
-        // State
-        isOnline:        false,
-
-    };
 
     _getNav = () => {
         const { isAuthenticated, profile } = this.props;

@@ -13,16 +13,17 @@ export function* logoutWorker() {
 
         const token = yield apply(localStorage, localStorage.getItem, [ 'token' ]);
 
-        if (token) {
-            yield apply(api, api.auth.logout, [ token ]);
-            yield apply(localStorage, localStorage.removeItem, [ 'token' ]);
-        }
-
+        yield apply(api, api.auth.logout, [ token ]);
     } catch (e) {
-        console.error('Login worker', e);
+        console.error('Logout worker', e);
     } finally {
+        yield apply(localStorage, localStorage.removeItem, [ 'token' ]);
+        yield apply(localStorage, localStorage.removeItem, [ 'remember' ]);
+
         yield put(logout());
+
         yield put(stopFetching());
+
         yield put(clearProfile());
     }
 }

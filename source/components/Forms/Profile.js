@@ -48,7 +48,6 @@ export default class Profile extends Component {
     };
 
     render () {
-        console.log(this.props)
         const { profile, isFetching } = this.props;
 
         const buttonStyle = cx(Styles.loginSubmit, {

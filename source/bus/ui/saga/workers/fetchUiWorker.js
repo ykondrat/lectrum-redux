@@ -6,5 +6,5 @@ import { api } from '../../../../API';
 import { fillPosts } from '../../actions';
 
 export function* fetchUiWorker() {
-    console.log('Ui worker');
+    console.log('UI worker');
 }

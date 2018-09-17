@@ -2,14 +2,12 @@
 import { put, apply, call } from 'redux-saga/effects';
 
 // Instruments
-import { api } from '../../../../API';
 import { authenticateAsync, initialize } from '../../actions';
-import { fillProfile } from '../../../profile/actions';
 
 export function* initializeWorker() {
     try {
-        const token = yield apply(localStorage, localStorage.getItem, [ 'token' ]);
-        
+        const token = yield apply(localStorage, localStorage.getItem, [ 'remember' ]);
+
         if (token) {
             yield put(authenticateAsync());
         } else {

@@ -11,6 +11,9 @@ import { Loading } from '../components';
 
 // Actions
 import {  initializeAsync } from '../bus/auth/actions';
+import { listenConnection, listenPosts } from '../bus/socket/actions';
+// Socket
+import { socket, joinSocketChannel } from '../init/socket';
 
 const mapStateToProps = (state) => {
     return ({
@@ -21,22 +24,28 @@ const mapStateToProps = (state) => {
 
 @hot(module)
 @withRouter // To fix bug with react-router and redux (run forceUpdate())
-@connect(mapStateToProps, { initializeAsync })
+@connect(mapStateToProps, { initializeAsync, listenConnection, listenPosts })
 export default class App extends Component {
 
     componentDidMount () {
-        this.props.initializeAsync()
+        this.props.initializeAsync();
+        this.props.listenConnection();
+        joinSocketChannel();
+    }
+
+    componentWillUnmount () {
+        socket.removeAllListeners();
     }
 
     render () {
-        const { isAuthenticated, isInitialized } = this.props;
+        const { isAuthenticated, isInitialized, listenPosts } = this.props;
 
         if (!isInitialized) {
             return <Loading/>
         }
 
         return (
-            isAuthenticated ? <Private /> : <Public />
+            isAuthenticated ? <Private listenPosts = { listenPosts } socket = {socket}/> : <Public />
         );
     }
 

@@ -14,8 +14,10 @@ export function* loginWorker({ payload }) {
         const profile = yield apply(api, api.auth.login, [ payload ]); // context, method
 
         if (payload.remember) {
-            yield apply(localStorage, localStorage.setItem, [ 'token', profile.token ]);
+            yield apply(localStorage, localStorage.setItem, [ 'remember', true ]);
         }
+
+        yield apply(localStorage, localStorage.setItem, [ 'token', profile.token ]);
 
         yield put(authenticate());
 

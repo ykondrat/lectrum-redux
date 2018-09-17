@@ -9,6 +9,14 @@ import { Feed, Profile, NewPassword } from '../pages';
 
 export default class Private extends Component {
 
+    componentDidMount () {
+        this.props.listenPosts();
+    }
+
+    componentWillUnmount () {
+        socket.removeAllListeners();
+    }
+
     render () {
         return (
             <Switch>
@@ -31,5 +39,5 @@ export default class Private extends Component {
             </Switch>
         );
     }
-    
+
 }

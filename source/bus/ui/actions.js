@@ -9,3 +9,11 @@ export const startFetching = () => ({
 export const stopFetching = () => ({
     type: types.STOP_FETCHING
 });
+
+export const setOnlineState = () => ({
+    type: types.SET_ONLINE_STATE
+});
+
+export const setOfflineState = () => ({
+    type: types.SET_OFFLINE_STATE
+});

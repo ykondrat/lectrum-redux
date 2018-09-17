@@ -12,14 +12,14 @@ export function* authenticateWorker() {
         yield put(startFetching());
 
         const token = yield apply(localStorage, localStorage.getItem, [ 'token' ]);
-        
+
         const profile = yield apply(api, api.auth.login, [ { token } ]);
 
         yield put(authenticate());
 
         yield put(fillProfile(profile));
     } catch (e) {
-        console.error('Login worker', e);
+        console.error('Authenticate worker', e);
     } finally {
         yield put(initialize());
         yield put(stopFetching());

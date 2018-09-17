@@ -12,20 +12,35 @@ import { mockedProfile } from '../../instruments/mockedData';
 import { Composer, Catcher, Post } from '../../components';
 
 // Actions
-import { fetchPostsAsync } from '../../bus/posts/actions';
+import {
+    fetchPostsAsync,
+    likePostAsync,
+    unlikePostAsync,
+    createPostAsync,
+    removePostAsync
+} from '../../bus/posts/actions';
 
 const mapStateToProps = (state) => {
     return ({
         posts: state.posts,
         profile: state.profile
     });
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return ({
-        actions: bindActionCreators({ fetchPostsAsync }, dispatch)
-    })
-}
+        actions: bindActionCreators(
+            {
+                fetchPostsAsync,
+                likePostAsync,
+                unlikePostAsync,
+                createPostAsync,
+                removePostAsync
+            },
+            dispatch
+        )
+    });
+};
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Posts extends Component {
