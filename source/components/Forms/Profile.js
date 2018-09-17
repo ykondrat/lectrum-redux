@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Form, Control } from 'react-redux-form';
 import cx from 'classnames';
 import { Map } from 'immutable';
+import { connect } from 'react-redux';
 
 // Instruments
 import Styles from './styles.m.css';
@@ -13,11 +14,19 @@ import { book } from '../../navigation/book';
 // Components
 import { Input } from '../../components';
 
+const mapStateToProps = (state) => {
+    return ({
+        isAuthenticated: state.auth.get('isAuthenticated'),
+        profile: state.profile
+    });
+}
+
+@connect(mapStateToProps)
 export default class Profile extends Component {
     static defaultProps = {
         // State
         isFetching: false,
-        profile:    Map(),
+        // profile:    Map(),
 
         // Actions
         updateNameAsync:   () => {},
@@ -39,6 +48,7 @@ export default class Profile extends Component {
     };
 
     render () {
+        console.log(this.props)
         const { profile, isFetching } = this.props;
 
         const buttonStyle = cx(Styles.loginSubmit, {

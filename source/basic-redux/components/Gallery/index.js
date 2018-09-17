@@ -5,12 +5,11 @@ import { hot } from 'react-hot-loader';
 import { store } from '../../init/store';
 
 import { showNextPhoto, showPrevPhoto, showPhoto } from '../../bus/gallery/actions';
-import cx from 'classnames';
 
-window.x = store;
 
 // Instruments
 import Styles from './styles.m.css';
+import cx from 'classnames';
 
 @hot(module)
 export default class Gallery extends Component {

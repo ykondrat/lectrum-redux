@@ -2,19 +2,20 @@
 import React, { Component } from 'react';
 import { Formik, Form, Field } from 'formik';
 import cx from 'classnames';
+import { connect } from 'react-redux';
 
 // Instruments
 import Styles from './styles.m.css';
 import { login } from '../../bus/forms/shapes';
 
-export default class LoginForm extends Component {
-    static defaultProps = {
-        // State
-        isFetching: false,
+import { loginAsync } from '../../bus/auth/actions';
 
-        // Actions
-        loginAsync: () => {},
-    };
+const mapStateToProps = (state) => ({
+    isFetching: state.ui.get('isFetching')
+});
+
+@connect(mapStateToProps, { loginAsync })
+export default class LoginForm extends Component {
 
     _submitLoginForm = (credentials) => {
         this.props.loginAsync(credentials);
