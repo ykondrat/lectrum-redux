@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`uiReducer tests: uiReducer test for default switch case 1`] = `
+Immutable.Map {
+  "isFetching": false,
+  "isOnline": false,
+}
+`;
+
+exports[`uiReducer tests: uiReducer test for setOfflineState 1`] = `
+Immutable.Map {
+  "isFetching": false,
+  "isOnline": false,
+}
+`;
+
+exports[`uiReducer tests: uiReducer test for setOnlineState 1`] = `
+Immutable.Map {
+  "isFetching": false,
+  "isOnline": true,
+}
+`;
+
+exports[`uiReducer tests: uiReducer test for startFetching 1`] = `
+Immutable.Map {
+  "isFetching": true,
+  "isOnline": false,
+}
+`;
+
+exports[`uiReducer tests: uiReducer test for stopFetching 1`] = `
+Immutable.Map {
+  "isFetching": false,
+  "isOnline": false,
+}
+`;

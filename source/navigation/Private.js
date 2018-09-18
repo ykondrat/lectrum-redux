@@ -6,6 +6,8 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { book } from './book';
 
 import { Feed, Profile, NewPassword } from '../pages';
+// Socket
+import { socket } from '../init/socket';
 
 export default class Private extends Component {
 

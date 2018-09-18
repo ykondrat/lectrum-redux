@@ -1,5 +1,6 @@
 // Core
 import { put, apply, call } from 'redux-saga/effects';
+import { actions } from 'react-redux-form';
 
 // Instruments
 import { api } from '../../../../API';
@@ -12,7 +13,7 @@ export function* loginWorker({ payload }) {
         yield put(startFetching());
 
         const profile = yield apply(api, api.auth.login, [ payload ]); // context, method
-
+        debugger;
         if (payload.remember) {
             yield apply(localStorage, localStorage.setItem, [ 'remember', true ]);
         }
@@ -20,8 +21,9 @@ export function* loginWorker({ payload }) {
         yield apply(localStorage, localStorage.setItem, [ 'token', profile.token ]);
 
         yield put(authenticate());
-
+        const { firstName, lastName } = profile;
         yield put(fillProfile(profile));
+        yield put(actions.merge('forms.user.profile', { firstName, lastName }));
     } catch (e) {
         console.error('Login worker', e);
     } finally {

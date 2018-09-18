@@ -5,8 +5,8 @@ import { Map } from 'immutable';
 import { types } from './types';
 
 const initialState = Map({
-    isAuthenticated: true,
-    isInitialized: true
+    isAuthenticated: false,
+    isInitialized: false
 });
 
 export const authReducer = (state = initialState, action) => {

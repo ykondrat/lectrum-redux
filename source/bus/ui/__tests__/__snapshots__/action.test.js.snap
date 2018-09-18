@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ui actions tests: setOfflineState test 1`] = `
+Object {
+  "type": "SET_OFFLINE_STATE",
+}
+`;
+
+exports[`ui actions tests: setOnlineState test 1`] = `
+Object {
+  "type": "SET_ONLINE_STATE",
+}
+`;
+
+exports[`ui actions tests: startFetching test 1`] = `
+Object {
+  "type": "START_FETCHING",
+}
+`;

@@ -1,5 +1,6 @@
 // Core
-import { put, apply, call } from 'redux-saga/effects';
+import { put, apply } from 'redux-saga/effects';
+import { actions } from 'react-redux-form';
 
 // Instruments
 import { api } from '../../../../API';
@@ -18,6 +19,9 @@ export function* authenticateWorker() {
         yield put(authenticate());
 
         yield put(fillProfile(profile));
+
+        yield put(actions.change('forms.user.profile.firstName', profile.firstName));
+        yield put(actions.change('forms.user.profile.lastName', profile.lastName));
     } catch (e) {
         console.error('Authenticate worker', e);
     } finally {

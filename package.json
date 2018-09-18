@@ -15,7 +15,7 @@
         "lint:css": "jest --projects \"./jest/jest.stylelint.config.js\"",
         "test": "jest --config=\"./jest/jest.test.config.js\"",
         "test:watch": "npm test -- --watch",
-        "test:debug": "node --inspect-brk jest --runInBand --config=\"./jest/jest.test.config.js\"",
+        "test:debug": "node --inspect-brk ./node_modules/.bin/jest --runInBand --config=\"./jest/jest.test.config.js\"",
         "soundcheck": "jest --config=\"./jest/jest.config.js\"",
         "prettier": "prettier-eslint --list-different \"./source/**/*.js\"; prettier-eslint --write \"./source/**/*.js\"",
         "deploy": "run-s build:github-pages gh-pages",

@@ -10,6 +10,7 @@ import { loginWorker } from './workers/loginWorker';
 import { authenticateWorker } from './workers/authenticateWorker';
 import { initializeWorker } from './workers/initializeWorker';
 import { logoutWorker } from './workers/logoutWorker';
+
 // function* watchSignup() {
 // }
 //

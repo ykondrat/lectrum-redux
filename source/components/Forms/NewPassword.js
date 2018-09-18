@@ -3,17 +3,22 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import cx from 'classnames';
+import { connect } from 'react-redux';
 
 // Instruments
 import Styles from './styles.m.css';
 import { newPassword } from '../../bus/forms/shapes';
 import { book } from '../../navigation/book';
 
+const mapStateToProps = (state) => {
+    return ({
+        isFetching: state.ui.get('isFetching')
+    });
+}
+
+@connect(mapStateToProps)
 export default class NewPassword extends Component {
     static defaultProps = {
-        // State
-        isFetching: false,
-
         // Actions
         updatePasswordAsync: () => {},
     };

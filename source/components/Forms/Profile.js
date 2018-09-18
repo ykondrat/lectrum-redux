@@ -16,6 +16,7 @@ import { Input } from '../../components';
 
 const mapStateToProps = (state) => {
     return ({
+        isFetching: state.ui.get('isFetching'),
         isAuthenticated: state.auth.get('isAuthenticated'),
         profile: state.profile
     });
@@ -24,10 +25,6 @@ const mapStateToProps = (state) => {
 @connect(mapStateToProps)
 export default class Profile extends Component {
     static defaultProps = {
-        // State
-        isFetching: false,
-        // profile:    Map(),
-
         // Actions
         updateNameAsync:   () => {},
         updateAvatarAsync: () => {},
