@@ -13,7 +13,6 @@ export function* loginWorker({ payload }) {
         yield put(startFetching());
 
         const profile = yield apply(api, api.auth.login, [ payload ]); // context, method
-        debugger;
         if (payload.remember) {
             yield apply(localStorage, localStorage.setItem, [ 'remember', true ]);
         }
